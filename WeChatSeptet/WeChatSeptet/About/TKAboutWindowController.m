@@ -25,7 +25,7 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    self.titleLabel.stringValue = YMLanguage(@"微信小助手", @"WeChat Assistant");
+    self.titleLabel.stringValue = YMLanguage(@"WeChatAssistant", @"WeChat Assistant");
     self.homePageTitleLabel.stringValue = YMLanguage(@"项目主页:", @"Project Homepage:");
     self.window.backgroundColor = [NSColor whiteColor];
     NSDictionary *localInfo = [self localInfoPlist];
@@ -49,7 +49,7 @@ static NSString * const kWeChatResourcesPath = @"/Applications/WeChat.app/Conten
 
 - (IBAction)didClickHomepageURL:(NSButton *)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/MustangYM/WeChatSeptet-ForMac"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/CharlotteFallices/WCA"]];
 }
 
 @end

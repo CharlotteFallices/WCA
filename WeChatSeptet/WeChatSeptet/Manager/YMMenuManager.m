@@ -32,13 +32,13 @@
                                                     keyEquivalent:@"T"
                                                             state:[[YMWeChatConfig sharedConfig] preventRevokeEnable]];
     if ([[YMWeChatConfig sharedConfig] preventRevokeEnable]) {
-        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回的消息", @"Revoke Self")
+        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"双向拦截", @"Revoke Self")
                                                                    action:@selector(onPreventSelfRevoke:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[YMWeChatConfig sharedConfig] preventSelfRevokeEnable]];
         
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步拦截结果", @"Revoke Sync To Phone")
                                                                     action:@selector(onPreventAsyncRevokeToPhone:)
                                                                     target:self
                                                              keyEquivalent:@""
@@ -61,38 +61,38 @@
         }
         
         
-        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"开启消息防撤回", @"Revoke")];
+        NSMenu *subPreventMenu = [[NSMenu alloc] initWithTitle:YMLanguage(@"开启拦截", @"Revoke")];
         [subPreventMenu addItems:@[preventSelfRevokeItem, preventAsyncRevokeItem]];
         preventRevokeItem.submenu = subPreventMenu;
     }
        
     
     #pragma mark - 主题
-    NSMenuItem *backGroundItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"主题模式", @"Themes")
+    NSMenuItem *backGroundItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"应用主题", @"Themes")
                                                            action:nil
                                                            target:self
                                                     keyEquivalent:@""
                                                             state:YMWeChatConfig.sharedConfig.usingTheme];
     
-    NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"黑夜模式", @"Dark Mode")
+    NSMenuItem *darkModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"浅黑色", @"Dark Mode")
                                                       action:@selector(onChangeDarkMode:)
                                                       target:self
                                                keyEquivalent:@""
                                                        state:[YMWeChatConfig sharedConfig].darkMode];
     
-    NSMenuItem *blackModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"深邃模式", @"Black Mode")
+    NSMenuItem *blackModeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"深黑色", @"Black Mode")
                                                        action:@selector(onChangeBlackMode:)
                                                        target:self
                                                 keyEquivalent:@""
                                                         state:YMWeChatConfig.sharedConfig.blackMode];
     
-    NSMenuItem *pinkColorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"少女模式", @"Pink Mode")
+    NSMenuItem *pinkColorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"浅粉色", @"Pink Mode")
                                                        action:@selector(onChangePinkModel:)
                                                        target:self
                                                 keyEquivalent:@""
                                                         state:[YMWeChatConfig sharedConfig].pinkMode];
     
-    NSMenuItem *groupMulticolorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"群成员彩色", @"Group Member Multicolor")
+    NSMenuItem *groupMulticolorItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"色彩差分", @"Group Member Multicolor")
                                                              action:@selector(onGroupMultiColorModel:)
                                                              target:self
                                                       keyEquivalent:@""
@@ -187,9 +187,9 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     item.state = !item.state;
     NSString *msg = nil;
     if (item.state) {
-        msg = YMLanguage(@"打开深邃模式, 重启生效!",@"Turn on BLACK MODE and restart to take effect!");
+        msg = YMLanguage(@"已启用,重启生效!",@"Turn on BLACK MODE and restart to take effect!");
     } else {
-        msg = YMLanguage(@"关闭深邃模式, 重启生效!",@"Turn off BLACK MODE and restart to take effect!");
+        msg = YMLanguage(@"已停用,重启生效!",@"Turn off BLACK MODE and restart to take effect!");
     }
     NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
                                      defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
@@ -218,9 +218,9 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     item.state = !item.state;
     NSString *msg = nil;
     if (item.state) {
-        msg = YMLanguage(@"打开黑夜模式, 重启生效!",@"Turn on dark mode and restart to take effect!");
+        msg = YMLanguage(@"已启用,重启生效!",@"Turn on dark mode and restart to take effect!");
     } else {
-        msg = YMLanguage(@"关闭黑夜模式, 重启生效!",@"Turn off dark mode and restart to take effect!");
+        msg = YMLanguage(@"已停用重启生效!",@"Turn off dark mode and restart to take effect!");
     }
     NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
                                      defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
@@ -249,9 +249,9 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     item.state = !item.state;
     NSString *msg = nil;
     if (item.state) {
-        msg = YMLanguage(@"打开少女模式, 重启生效!",@"Turn on Pink mode and restart to take effect!");
+        msg = YMLanguage(@"已启用,重启生效!",@"Turn on Pink mode and restart to take effect!");
     } else {
-        msg = YMLanguage(@"关闭少女模式, 重启生效!",@"Turn off Pink mode and restart to take effect!");
+        msg = YMLanguage(@"已停用,重启生效!",@"Turn off Pink mode and restart to take effect!");
     }
     NSAlert *alert = [NSAlert alertWithMessageText:YMLanguage(@"警告", @"WARNING")
                                      defaultButton:YMLanguage(@"取消", @"cancel")                       alternateButton:YMLanguage(@"确定重启",@"restart")
@@ -281,12 +281,12 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     
     NSString *msg = nil;
     if ([[YMWeChatConfig sharedConfig] pinkMode]) {
-        msg = YMLanguage(@"只在黑暗和深邃模式有效",@"roupMultiColor mode only in dark mode and black mode has effect!");
+        msg = YMLanguage(@"只在深色背景时有效",@"roupMultiColor mode only in dark mode and black mode has effect!");
     } else {
         if (item.state) {
-            msg = YMLanguage(@"打开群成员昵称彩色, 只在黑暗/深邃有效, 重启生效!",@"Turn on GroupMultiColor mode only in dark mode and black mode and restart to take effect!");
+            msg = YMLanguage(@"已启用,重启生效!",@"Turn on GroupMultiColor mode only in dark mode and black mode and restart to take effect!");
         } else {
-            msg = YMLanguage(@"关闭群成员昵称彩色, 重启生效!",@"Turn off GroupMultiColor mode and restart to take effect!");
+            msg = YMLanguage(@"已停用,重启生效!",@"Turn off GroupMultiColor mode and restart to take effect!");
         }
     }
     
@@ -313,13 +313,13 @@ static char kAboutWindowControllerKey;             //  关于窗口的关联 key
     item.state = !item.state;
     [[YMWeChatConfig sharedConfig] setPreventRevokeEnable:item.state];
     if (item.state) {
-        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"拦截自己撤回消息", @"Revoke Self")
+        NSMenuItem *preventSelfRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"双向拦截", @"Revoke Self")
                                                                    action:@selector(onPreventSelfRevoke:)
                                                                    target:self
                                                             keyEquivalent:@""
                                                                     state:[[YMWeChatConfig sharedConfig] preventSelfRevokeEnable]];
         
-        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"防撤回同步到手机", @"Revoke Sync To Phone")
+        NSMenuItem *preventAsyncRevokeItem = [NSMenuItem menuItemWithTitle:YMLanguage(@"同步拦截", @"Revoke Sync To Phone")
                                                                     action:@selector(onPreventAsyncRevokeToPhone:)
                                                                     target:self
                                                              keyEquivalent:@""
